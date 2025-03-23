@@ -3,75 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laadscherm</title>
+    <title>LucasKit (BETA)</title>
     <style>
-        * {
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FFFFFF; /* Witte achtergrond voor de pagina */
-            color: #333333; /* Donkere tekstkleur voor leesbaarheid */
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        #loader-container {
+            height: 100vh;
             text-align: center;
-            background-color: #FFFFFF; /* Witte achtergrond voor container */
-            padding: 40px 60px;
-            border-radius: 20px; /* Afgeronde hoeken */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Schaduw voor diepte */
-            border: 2px solid #D32F2F; /* Rode rand om de container */
         }
 
-        #loading-text {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #333333; /* Donkere tekstkleur */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            margin: 20px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
         }
 
-        #continue-button {
-            background-color: #D32F2F; /* Rood voor de knop */
-            color: #FFFFFF; /* Witte tekst voor de knop */
-            padding: 12px 24px;
+        h1 {
+            color: #ff0000;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #333;
+            margin-top: 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 20px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff0000;
+            border-radius: 5px;
             border: none;
-            border-radius: 10px; /* Afgeronde hoeken voor de knop */
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        #continue-button:hover {
-            background-color: #C2185B; /* Donkerder rood bij hover */
+        .button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
         }
+
+        .instructions {
+            margin-top: 30px;
+            display: none;
+            padding: 20px;
+            background-color: #eaeaea;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .instructions.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div id="loader-container">
-        <div id="loader-text">
-            <p id="loading-text">Aan het laden LucasM.nl</p>
-            <button id="continue-button" style="display: none;" onclick="window.location.href='main.html';">OK</button>
+    <div class="container">
+        <h1>LucasKit (BETA)</h1>
+        <p>De ultieme tool om je vrienden of collega's in de maling te nemen! Kies je besturingssysteem om de installatie-instructies te bekijken.</p>
+        <h2>Installeer LucasKit</h2>
+
+        <div class="button-container">
+            <button class="button" onclick="showInstructions('linux')">Linux</button>
+            <button class="button" onclick="showInstructions('mac')">Mac</button>
+            <button class="button" onclick="showInstructions('windows')">Windows</button>
+        </div>
+
+        <div class="instructions" id="linux">
+            <h3>Installatie op Linux</h3>
+            <p>1. Open je terminal.</p>
+            <p>2. Voer het volgende commando uit om het project te clonen:</p>
+            <code>git clone https://github.com/lucasenlucas/lucaskit.git</code>
+            <p>3. Ga naar de directory van het project:</p>
+            <code>cd lucaskit</code>
+            <p>4. Voer het installatiecommando uit:</p>
+            <code>sudo ./install.sh</code>
+            <p>5. Start de tool met:</p>
+            <code>lucaskit</code>
+        </div>
+        
+        <div class="instructions" id="mac">
+            <h3>Installatie op Mac</h3>
+            <p>1. Open je terminal.</p>
+            <p>2. Voer het volgende commando uit om het project te clonen:</p>
+            <code>git clone https://github.com/lucasenlucas/lucaskit.git</code>
+            <p>3. Ga naar de directory van het project:</p>
+            <code>cd lucaskit</code>
+            <p>4. Installeer de benodigde dependencies met:</p>
+            <code>brew install ./install.sh</code>
+            <p>5. Start de tool met:</p>
+            <code>lucaskit</code>
+        </div>
+        
+        <div class="instructions" id="windows">
+            <h3>Installatie op Windows</h3>
+            <p>1. Open je command prompt (CMD) als administrator.</p>
+            <p>2. Voer het volgende commando uit om het project te clonen:</p>
+            <code>git clone https://github.com/lucasenlucas/lucaskit.git</code>
+            <p>3. Ga naar de directory van het project:</p>
+            <code>cd lucaskit</code>
+            <p>4. Voer het installatiecommando uit via PowerShell:</p>
+            <code>powershell -ExecutionPolicy ByPass -File install.ps1</code>
+            <p>5. Start de tool met:</p>
+            <code>lucaskit</code>
         </div>
     </div>
 
     <script>
-        let loadingText = document.getElementById('loading-text');
-        let continueButton = document.getElementById('continue-button');
+        function showInstructions(system) {
+            // Verberg alle instructies
+            var instructions = document.querySelectorAll('.instructions');
+            instructions.forEach(function(instruction) {
+                instruction.classList.remove('active');
+            });
 
-        setTimeout(function() {
-            loadingText.textContent = 'Updating Lucas Tools';
-        }, 3000);  // Na 3 seconden wordt de tekst aangepast.
-
-        setTimeout(function() {
-            loadingText.textContent = 'Welkom bij LucasM.nl';
-            continueButton.style.display = 'inline-block';  // Laat de OK-knop zien.
-        }, 6000);  // Na 6 seconden wordt de tekst aangepast en de knop getoond.
+            // Toon de geselecteerde instructies
+            var activeInstruction = document.getElementById(system);
+            activeInstruction.classList.add('active');
+        }
     </script>
 </body>
 </html>
